@@ -12,6 +12,7 @@ import UserDropdown from "./UserDropdown.jsx";
 import { parse } from "postcss";
 import guest from "../photos/guest.png";
 import { USER_BASE_URL } from "../../Config/Config.js";
+import { HiMenu, HiX, HiBell } from "react-icons/hi";
 
 function Header({ toggleSidebar, isOpen }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -68,12 +69,24 @@ function Header({ toggleSidebar, isOpen }) {
         } bg-white border-b border-[#E0E0E0] p-3 space-y-4 sm:space-y-0`}
       >
         <div className="flex-shrink-0">
-          <img
+          {/* <img
             onClick={toggleSidebar}
             src={Icon}
             alt="Logo"
             className="h-6 sm:h-6 w-auto"
-          />
+          /> */}
+          <span>
+            {isOpen ? (
+              "" // <HiMenu size={18} onClick={handleToggle} />
+            ) : (
+              // <HiX size={18} onClick={handleToggle} />
+              <HiMenu
+                size={25}
+                onClick={toggleSidebar}
+                className="scale-x-100 w-8 cursor-pointer border-1 rounded border-gray-200 bg-gray-200 hover:bg-gray-300"
+              />
+            )}
+          </span>
         </div>
 
         {/* Right: Icons and User Info */}
