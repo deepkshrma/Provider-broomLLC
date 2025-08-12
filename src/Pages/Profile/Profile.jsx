@@ -61,9 +61,9 @@ function Profile() {
   if (!provider) return <div className="p-6">Profile not found.</div>;
 
   return (
-    <div className="p-6 ">
+    <div className=" ">
       {/* Header */}
-      <div className="flex  sm:flex-row justify-between  sm:items-start gap-3 sm:gap-4 my-3 ">
+      <div className="flex  sm:flex-row justify-between  sm:items-start gap-3 sm:gap-4  ">
         <PageTitle title={"My Profile"} />
         <button
           className="bg-blue-500 text-white sm:px-4 sm:py-2 px-2 py-1 rounded hover:bg-blue-600 text-sm font-medium"

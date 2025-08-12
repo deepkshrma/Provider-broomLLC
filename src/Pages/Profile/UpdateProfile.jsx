@@ -146,10 +146,15 @@ function UpdateProfile() {
       <PageTitle title="Update Profile" />
       <form
         onSubmit={handleSubmit}
-        className="mt-10 bg-white py-10 px-10 rounded"
+        className="mt-5 bg-white py-10 px-10 rounded"
       >
+        <ProfileImageUpload
+          label="Profile Picture"
+          preview={previewProfile}
+          onChange={(e) => handleFileChange(e, "profile_picture")}
+        />
         {/*  Fields for first_name, last_name */}
-        <div className="flex gap-5 mb-5">
+        <div className="flex gap-5 mb-8 mt-8">
           <InputField
             name="first_name"
             label="First Name"
@@ -165,7 +170,7 @@ function UpdateProfile() {
         </div>
 
         {/* Email and Phone */}
-        <div className="flex gap-5 mb-5">
+        <div className="flex gap-5 mb-8">
           <InputField
             name="email"
             label="Email"
@@ -182,7 +187,7 @@ function UpdateProfile() {
         </div>
 
         {/*  DOB and Gender */}
-        <div className="flex gap-5 mb-5">
+        <div className="flex gap-5 mb-8">
           <InputField
             name="dob"
             label="Date of Birth (dd-MM-yyyy)"
@@ -205,7 +210,7 @@ function UpdateProfile() {
         </div>
 
         {/*  Address Fields */}
-        <div className="grid grid-cols-2 gap-5 mb-5">
+        <div className="grid grid-cols-2 gap-5 mb-8">
           {["street", "houseNumber", "city", "state", "country", "zipCode"].map(
             (field) => (
               <InputField
@@ -220,12 +225,7 @@ function UpdateProfile() {
         </div>
 
         {/*  Image Uploads */}
-        <div className="flex gap-5 mb-5">
-          <ImageUpload
-            label="Profile Picture"
-            preview={previewProfile}
-            onChange={(e) => handleFileChange(e, "profile_picture")}
-          />
+        <div className="grid grid-cols-2 gap-5 mb-8">
           <ImageUpload
             label="Govt ID Front"
             preview={previewFrontId}
@@ -238,12 +238,14 @@ function UpdateProfile() {
           />
         </div>
 
-        <button
-          type="submit"
-          className="bg-blue-500 w-full rounded px-4 py-2 text-white cursor-pointer"
-        >
-          Update Profile
-        </button>
+        <div className="flex justify-end">
+          <button
+            type="submit"
+            className="bg-blue-500  rounded px-4 py-2 text-white cursor-pointer"
+          >
+            Update Profile
+          </button>
+        </div>
       </form>
     </div>
   );
@@ -260,10 +262,12 @@ function InputField({ name, label, value, onChange, type = "text" }) {
         placeholder=" "
         className="block px-2.5 pb-2 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0"
       />
-      <label className="absolute text-sm font-small text-gray-700 bg-white px-1 
+      <label
+        className="absolute text-sm font-small text-gray-700 bg-white px-1 
         transform -translate-y-1/2 top-0 left-2 peer-placeholder-shown:top-1/2 
         peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-sm 
-        peer-focus:top-0 peer-focus:text-gray-700 peer-focus:text-sm">
+        peer-focus:top-0 peer-focus:text-gray-700 peer-focus:text-sm"
+      >
         {label}
       </label>
     </div>
@@ -272,13 +276,40 @@ function InputField({ name, label, value, onChange, type = "text" }) {
 
 function ImageUpload({ label, preview, onChange }) {
   return (
-    <div className="w-full max-w-sm">
-      <label className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+    <div className="w-full max-w-lg">
+      <label className="flex flex-col items-center justify-center w-full h-50 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
         {preview ? (
           <img
             src={preview}
             alt="preview"
             className="object-cover w-full h-full rounded-lg"
+          />
+        ) : (
+          <div className="flex flex-col items-center justify-center pt-5 pb-6">
+            <CloudArrowUpIcon className="w-10 h-10 text-gray-400 mb-2" />
+            <p className="text-sm text-gray-500 font-semibold">{label}</p>
+          </div>
+        )}
+        <input
+          type="file"
+          accept="image/*"
+          className="hidden"
+          onChange={onChange}
+        />
+      </label>
+    </div>
+  );
+}
+
+function ProfileImageUpload({ label, preview, onChange }) {
+  return (
+    <div className="w-full max-w-lg">
+      <label className="flex flex-col items-center justify-center w-50 h-50 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+        {preview ? (
+          <img
+            src={preview}
+            alt="preview"
+            className="object-cover w-full h-full rounded-full"
           />
         ) : (
           <div className="flex flex-col items-center justify-center pt-5 pb-6">

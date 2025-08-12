@@ -25,6 +25,8 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { BsDot } from "react-icons/bs";
 import { HiMenu, HiX, HiBell } from "react-icons/hi";
+import { FaAngleDown } from "react-icons/fa6";
+import { FaAngleRight } from "react-icons/fa6";
 
 function Sidebar({ toggleSidebar, isOpen }) {
   const [dropdowns, setDropdowns] = useState({
@@ -279,7 +281,7 @@ const MenuItem = ({ icon, label, isActive, to }) => (
 
 const DropdownItem = ({ icon, label, isOpen, onToggle }) => (
   <div
-    className={`flex items-center gap-3 py-2 px-2 cursor-pointer hover:text-blue-500 ${
+    className={`flex items-center gap-3 py-2 px-2 cursor-pointer  ${
       isOpen ? "text-blue-500 bg-blue-50 " : "text-[#202224]"
     }`}
     onClick={onToggle}
@@ -298,11 +300,16 @@ const DropdownItem = ({ icon, label, isOpen, onToggle }) => (
     >
       {label}
     </span>
-    <img
+    {/* <img
       src={isOpen ? rightArrow : arrow}
       alt="arrow"
       className="ml-auto w-3 h-3"
-    />
+    /> */}
+    {isOpen ? (
+      <FaAngleDown className="ml-auto w-3 h-3" />
+    ) : (
+      <FaAngleRight className="ml-auto w-3 h-3" />
+    )}
   </div>
 );
 
