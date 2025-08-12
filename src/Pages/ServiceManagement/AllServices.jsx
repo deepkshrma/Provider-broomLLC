@@ -25,7 +25,7 @@ export default function AllServices() {
         return;
       }
 
-      // ✅ Get user profile first
+      // Get user profile first
       const profileRes = await axios.get(`${USER_BASE_URL}/my-profile`, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -34,7 +34,7 @@ export default function AllServices() {
         (cat) => cat.id
       );
 
-      // ✅ Get categories
+      // Get categories
       const res = await axios.get(`${BASE_URL}/admin/get-frontend-categories`, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -58,7 +58,7 @@ export default function AllServices() {
     }
   };
 
-  // ✅ Handle Parent Category Click
+  // Handle Parent Category Click
   const handleParentClick = (parentId) => {
     setActiveParent(parentId);
     if (parentId === "all") {
@@ -71,7 +71,7 @@ export default function AllServices() {
 
   const handleSubscriptionToggle = async (subId, subName) => {
     try {
-      // ✅ Immediately update UI
+      // Immediately update UI
       setSubCategories((prev) =>
         prev.map((sub) =>
           sub._id === subId ? { ...sub, isSubscribed: !sub.isSubscribed } : sub
@@ -118,7 +118,7 @@ export default function AllServices() {
     }
   };
 
-  // ✅ On mount
+  //  On mount
   useEffect(() => {
     fetchFrontendCategories();
   }, []);
