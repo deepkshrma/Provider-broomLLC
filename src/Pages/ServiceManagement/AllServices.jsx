@@ -4,6 +4,7 @@ import { BASE_URL } from "../../Config/Config";
 import { USER_BASE_URL } from "../../Config/Config";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import PageTitle from "../../assets/components/PageTittle";
 
 export default function AllServices() {
   const [parentCategories, setParentCategories] = useState([]);
@@ -127,9 +128,10 @@ export default function AllServices() {
     <>
       {/* <div className="relative w-full h-auto border-l border-[#E0E0E0] bg-blue-50 "> */}
       {/* Main Container */}
-      <div className="w-full h-full p-5 box-border mb-[200px]">
-        <h2 className="flex items-center font-bold mb-3">All Service</h2>
-        <div className="w-full h-auto flex gap-2 bg-white rounded">
+      <div className="w-full h-full  box-border ">
+        {/* <h2 className="flex items-center font-bold mb-3">All Service</h2> */}
+        <PageTitle title={"All Service"} />
+        <div className="w-full h-auto flex gap-2 bg-white rounded mt-5">
           {/* LEFT MENU */}
           <div className="w-[20%] h-auto p-[15px]">
             <div className="w-full h-auto border-l border-[#E0E0E0]">

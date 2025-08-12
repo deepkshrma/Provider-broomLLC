@@ -14,6 +14,7 @@ import { TiTick } from "react-icons/ti";
 import { RxCross2 } from "react-icons/rx";
 import { FaCaretLeft } from "react-icons/fa";
 import { FaCaretRight } from "react-icons/fa";
+import PageTitle from "../assets/components/PageTittle";
 
 function BookingRequest() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -194,8 +195,10 @@ function BookingRequest() {
   return (
     <>
       {/* Main container */}
-      <div className="px-[20px] mb-[100px]">
-        <h1 className="py-[20px] font-[600] text-[20px]">Booking Request</h1>
+      <div className="">
+        {/* <h1 className="py-[20px] font-[600] text-[20px]">Booking Request</h1> */}
+        <PageTitle title={"Booking Request"} />
+
         <div className="flex justify-end text-[14px] text-[#979797] font-medium">
           Total Request: <span className="text-[14px] text-[black]">29</span>
         </div>

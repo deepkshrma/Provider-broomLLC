@@ -85,7 +85,7 @@ function Sidebar({ isOpen }) {
             />
           </Section>
 
-          <hr className="text-[#E0E0E0] mt-5" />
+          <hr className="text-[#E0E0E0] mt-5 mb-5" />
 
           <Section title="BOOKING MANAGEMENT">
             <DropdownItem
@@ -109,6 +109,8 @@ function Sidebar({ isOpen }) {
               })}
           </Section>
 
+          <hr className="text-[#E0E0E0] mt-5 mb-5" />
+
           <Section title="HELP & SUPPORT">
             <MenuItem
               icon={<MdChat />}
@@ -117,6 +119,7 @@ function Sidebar({ isOpen }) {
               isActive={location.pathname === "/Messages"}
             />
           </Section>
+          <hr className="text-[#E0E0E0] mt-5 mb-5" />
 
           <Section title="SERVICE MANAGEMENT">
             <MenuItem
@@ -296,7 +299,10 @@ const DropdownItem = ({ icon, label, isOpen, onToggle }) => (
 );
 
 const SubItem = ({ label, count, to, isActive }) => (
-  <Link to={to} className="pl-9 w-full flex justify-between items-center mb-2 ">
+  <Link
+    to={to}
+    className="pl-9 py-2 w-full flex justify-between items-center mb-2 "
+  >
     {/* <BsDot /> */}
     <span className="flex items-center gap-2">
       <BsDot
