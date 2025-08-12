@@ -147,7 +147,7 @@ export default function MyServices() {
       <div className="w-full h-full box-border">
         {/* <h2 className="flex items-center font-bold mb-3">My Services</h2> */}
         <PageTitle title={"My Services"} />
-        <div className="w-full h-auto flex gap-2 bg-white rounded">
+        <div className="w-full h-auto flex gap-2 mt-5 bg-white rounded">
           {/* LEFT MENU */}
           <div className="w-[20%] h-auto p-[15px]">
             <div className="w-full h-auto border-l border-[#E0E0E0]">

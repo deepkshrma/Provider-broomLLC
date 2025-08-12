@@ -142,7 +142,7 @@ function UpdateProfile() {
   };
 
   return (
-    <div className="main main_page">
+    <div className="">
       <PageTitle title="Update Profile" />
       <form
         onSubmit={handleSubmit}
