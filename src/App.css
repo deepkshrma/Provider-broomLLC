@@ -1,0 +1,144 @@
+@import "tailwindcss";
+body {
+  font-family: "Montserrat", sans-serif;
+}
+.welcomeBack {
+  font-size: 30px;
+  line-height: 117%;
+  letter-spacing: 0px;
+  font-weight: 700;
+}
+
+.main.main_page {
+  width: 100%;
+  padding: 2.5rem 1rem 1rem 17.5rem;
+}
+
+.model {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  /* visibility: hidden; */
+}
+.modelBox {
+  width: 600px;
+  height: 400px;
+  background-color: #fcfcfc;
+  padding: 25px;
+  opacity: 1;
+}
+.model .modelBox .modelBody {
+  position: relative;
+  background-color: #fcfcfc;
+  opacity: 1;
+}
+
+.model .modelBox .close {
+  position: absolute;
+  right: 0%;
+  width: 23px;
+  height: 23px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fcfcfc;
+  opacity: 1;
+}
+.model .modelBox .close span {
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+}
+.model .modelBox .close span:nth-child(1) {
+  transform: rotate(45deg) translateY(4px);
+}
+.model .modelBox .close span:nth-child(2) {
+  transform: rotate(-45deg) translate(-1px, -1px);
+}
+.model .modelBox .close:hover span:nth-child(1) {
+  transform: rotate(10deg) translateY(2px);
+}
+.model .modelBox .close:hover span:nth-child(2) {
+  transform: rotate(-10deg);
+}
+.model .modelBox .newbox h3 {
+  line-height: 2;
+  text-transform: uppercase;
+}
+.model .modelBox .newbox h3,
+.model .modelBox .newbox p {
+  text-align: center;
+}
+.model .modelBox .text_center {
+  height: 255px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-around;
+  box-sizing: border-box;
+}
+.model .modelBox .text_center .formGroup {
+  width: 50%;
+  align-items: center;
+  align-self: center;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #bcb6c6;
+}
+.model .modelBox .text_center .formGroup input {
+  width: 100%;
+  height: 90%;
+  border: 0;
+  padding: 25px;
+  box-sizing: border-box;
+}
+.model .modelBox .text_center button {
+  position: relative;
+  box-sizing: border-box;
+  width: 150px;
+  height: 50px;
+  align-self: center;
+  background-color: rgb(206, 149, 63);
+  padding: 0px;
+  overflow: hidden;
+}
+.model .modelBox .text_center button .gin {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 100%;
+  left: 100%;
+  background-color: rgb(206, 149, 63);
+  opacity: 0.6;
+  transition: 0.7s;
+}
+.g5:hover .gin {
+  top: 0;
+  left: 0;
+}
+
+/* animations.css */
+@keyframes borderPulse {
+  0% {
+    box-shadow: 0 0 0 0 #bfdbfe;
+  }
+  50% {
+    box-shadow: 0 0 0 4px #bfdbfe;
+  }
+  100% {
+    box-shadow: 0 0 0 0 #bfdbfe;
+  }
+}
+
+.border-grow-animation {
+  animation: borderPulse 4s ease-in-out infinite;
+  border-radius: 9999px;
+}
