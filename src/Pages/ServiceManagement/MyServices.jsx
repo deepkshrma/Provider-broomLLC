@@ -12,7 +12,6 @@ export default function MyServices() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // ✅ Fetch profile to get subscribed categories
   const fetchMyServices = async () => {
     try {
       setLoading(true);
