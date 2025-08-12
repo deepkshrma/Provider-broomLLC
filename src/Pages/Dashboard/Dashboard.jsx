@@ -40,7 +40,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import Piechart from "./Piechart";
+import TotalVendorsChart from "./TotalVendorsChart";
 import PageTittle from "../../assets/components/PageTittle";
 
 function Dashboard() {
@@ -341,10 +341,10 @@ function Dashboard() {
             </div>
 
             {/* Right Side */}
-            <div className="w-1/2 h-auto flex justify-between items-start px-[3%] pb-[3%]">
+            <div className="w-1/2 h-auto flex justify-between items-start px-4 py-5">
               {/* Content here if needed */}
               {/* //pieChart */}
-              <Piechart />
+              <TotalVendorsChart />
             </div>
           </div>
         </div>

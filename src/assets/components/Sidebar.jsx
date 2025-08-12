@@ -24,8 +24,9 @@ import { VscGraph } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { BsDot } from "react-icons/bs";
+import { HiMenu, HiX, HiBell } from "react-icons/hi";
 
-function Sidebar({ isOpen }) {
+function Sidebar({ toggleSidebar, isOpen }) {
   const [dropdowns, setDropdowns] = useState({
     booking: false,
     user: false,
@@ -71,8 +72,15 @@ function Sidebar({ isOpen }) {
         overflow-hidden z-50`}
       >
         <div className="w-full h-auto px-2 pt-5">
-          <div className="flex justify-center mb-5">
+          <div className="flex justify-between mb-5 pl-4">
             <img className="w-[137px] h-[24px]" src={Broom_LLC1} alt="Logo" />
+            {isOpen && (
+              <HiX
+                size={18}
+                onClick={toggleSidebar}
+                className="text-gray-500 cursor-pointer hover:scale-110"
+              />
+            )}
           </div>
 
           <Section>
