@@ -32,7 +32,7 @@ export default function MyServices() {
       const subscribedCats = profileRes.data.data.service_categories || [];
       const subscribedIds = subscribedCats.map((c) => c.id);
 
-      // ✅ store subscribed list so handleParentClick works
+      // store subscribed list so handleParentClick works
       setMyCategories(subscribedCats);
 
       // Get all categories with full UI data
@@ -63,7 +63,7 @@ export default function MyServices() {
     }
   };
 
-  // ✅ Handle parent click
+  //  Handle parent click
   const handleParentClick = (parentId) => {
     setActiveParent(parentId);
     if (parentId === "all") {
@@ -86,10 +86,8 @@ export default function MyServices() {
     }
   };
 
-  // ✅ Unsubscribe
   const handleSubscriptionToggle = async (subId, subName) => {
     try {
-      // ✅ Immediately update UI
       setSubCategories((prev) =>
         prev.map((sub) =>
           sub._id === subId ? { ...sub, isSubscribed: !sub.isSubscribed } : sub
@@ -129,7 +127,9 @@ export default function MyServices() {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      toast.success(alreadySubscribed ? "Unsubscribed" : "Subscribed");
+      toast.success(
+        alreadySubscribed ? "Category Unsubscribed" : "Category Subscribed "
+      );
       fetchMyServices();
     } catch (err) {
       console.error("Error updating subscription:", err);

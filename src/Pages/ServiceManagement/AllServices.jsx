@@ -112,7 +112,7 @@ export default function AllServices() {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      toast.success(alreadySubscribed ? "Unsubscribed" : "Subscribed");
+      toast.success(alreadySubscribed ? "Category Unsubscribed" : "Category Subscribed");
     } catch (err) {
       console.error("Error updating subscription:", err);
       toast.error("Failed to update subscription");

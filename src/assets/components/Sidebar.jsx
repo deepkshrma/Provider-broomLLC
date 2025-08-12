@@ -137,7 +137,7 @@ function Sidebar({ toggleSidebar, isOpen }) {
               isActive={location.pathname === "/AllServices"}
             />
             <MenuItem
-              icon={<RiSuitcase2Fill />}
+              icon={<MdSubscriptions />}
               label="My services"
               to="/MyServices"
               isActive={location.pathname === "/MyServices"}
