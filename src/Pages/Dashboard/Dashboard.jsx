@@ -41,6 +41,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import Piechart from "./Piechart";
+import PageTittle from "../../assets/components/PageTittle";
 
 function Dashboard() {
   // logic for year
@@ -89,8 +90,9 @@ function Dashboard() {
 
   return (
     <>
-      <div className="px-[20px] mb-[100px]">
-        <h1 className="py-[20px] font-[600] text-[20px]">Business Analytics</h1>
+      <div className=" ">
+        {/* <h1 className="py-[20px] font-[600] text-[20px]">Business Analytics</h1> */}
+        <PageTittle title={"Business Analytics"} />
 
         <div className="my-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

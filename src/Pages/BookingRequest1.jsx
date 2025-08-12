@@ -28,6 +28,7 @@ import { MdEventNote } from "react-icons/md";
 import { MdBusinessCenter } from "react-icons/md";
 import { GiSettingsKnobs } from "react-icons/gi";
 import Footer from "../assets/components/Footer";
+import PageTitle from "../assets/components/PageTittle";
 
 function BookingRequest1() {
   const bookingData = [
@@ -166,8 +167,8 @@ function BookingRequest1() {
   return (
     <>
       {/* Main container */}
-      <div className=" px-[20px] mb-[100px]">
-        <h1 className="py-[20px] font-[600] text-[20px]">Booking Request</h1>
+      <div className=" ">
+        <PageTitle title={"Booking Request"} />
         <div className="flex justify-end text-[14px] text-[#979797] font-medium">
           Total Request: <span className="text-[14px] text-[black]">25</span>
         </div>

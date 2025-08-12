@@ -3,6 +3,7 @@ import axios from "axios";
 import { BASE_URL, USER_BASE_URL } from "../../Config/Config";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import PageTitle from "../../assets/components/PageTittle";
 
 export default function MyServices() {
   const [myCategories, setMyCategories] = useState([]);
@@ -12,7 +13,6 @@ export default function MyServices() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // ✅ Fetch profile to get subscribed categories
   const fetchMyServices = async () => {
     try {
       setLoading(true);
@@ -144,8 +144,9 @@ export default function MyServices() {
   return (
     <>
       {/* <div className="relative w-full h-auto border-l border-[#E0E0E0] bg-blue-50"> */}
-      <div className="w-full h-full p-5 box-border mb-[200px]">
-        <h2 className="flex items-center font-bold mb-3">My Services</h2>
+      <div className="w-full h-full box-border">
+        {/* <h2 className="flex items-center font-bold mb-3">My Services</h2> */}
+        <PageTitle title={"My Services"} />
         <div className="w-full h-auto flex gap-2 bg-white rounded">
           {/* LEFT MENU */}
           <div className="w-[20%] h-auto p-[15px]">

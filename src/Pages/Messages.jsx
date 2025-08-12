@@ -21,14 +21,15 @@ import { MdBusinessCenter } from "react-icons/md";
 import { GiSettingsKnobs } from "react-icons/gi";
 import { MdMessage } from "react-icons/md";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
+import PageTitle from "../assets/components/PageTittle";
 
 function Messages() {
   return (
     <>
       {/* Main Container */}
-      <div className=" w-full h-full p-5 box-border">
+      <div className=" w-full h-full box-border">
         <h2 className="flex gap-2 items-center font-bold mb-3 text-[20px]">
-          Messages
+          <PageTitle title={"Messages"} />
           <div className="flex justify-center items-center text-blue-500 w-5 h-5 bg-gray-300 rounded text-xs font-medium">
             1
           </div>
