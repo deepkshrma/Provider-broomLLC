@@ -70,7 +70,7 @@ function Sidebar({ toggleSidebar, isOpen }) {
     <>
       <div
         className={`fixed top-0 left-0 h-screen bg-white shadow-md transition-all duration-300 
-        ${isOpen ? "w-1/6 visible" : "hidden"} 
+        ${isOpen ? "lg:w-1/6 w-3/4 visible" : "hidden"} 
         overflow-hidden z-50`}
       >
         <div className="w-full h-auto px-2 pt-5">

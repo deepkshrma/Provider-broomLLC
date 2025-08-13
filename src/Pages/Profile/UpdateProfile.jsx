@@ -241,7 +241,9 @@ function UpdateProfile() {
         <div className="flex justify-end">
           <button
             type="submit"
-            className="bg-blue-500  rounded px-4 py-2 text-white cursor-pointer"
+            className="bg-blue-500 rounded px-4 py-2 text-white cursor-pointer 
+             transition-all duration-300 ease-in-out 
+             hover:bg-blue-600 hover:shadow-lg hover:scale-105"
           >
             Update Profile
           </button>
