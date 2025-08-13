@@ -1,47 +1,47 @@
 import React from "react";
+import ReactDOM from "react-dom";
+import { IoMdClose } from "react-icons/io";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
 
-function DeleteModel() {
-  return (
-    <>
-      {/* model box */}
-      <div className="fixed top-0 left-0 w-full h-full bg-black/60  flex justify-center items-center z-20">
-        <div className="w-[25%] h-auto bg-[#fcfcfc] p-1 relative rounded">
-          <div className="w-full flex justify-end ">
-            <IoMdClose className="text-[#979797]" />
-          </div>
-          <div className="w-full flex justify-center p-4">
-            <div className="w-[60%]">
-              <div className="flex justify-center mb-4">
-                <div className="flex flex-col items-center gap-4">
-                  <AiOutlineExclamationCircle
-                    size={70}
-                    className="text-yellow-500"
-                  />
-                </div>
-              </div>
+function DeleteModel({ isOpen, onClose, onConfirm, redbutton, para }) {
+  if (!isOpen) return null;
 
-              {/* Bottom Two Services */}
-              <div>
-                <h2 className="font-[500] text-[20px] text-center mb-2">
-                  Are you sure?
-                </h2>
-                <p className="text-[12px] text-center text-gray-600 mb-3">
-                  Want to update subscription
-                </p>
-                <div className="flex text-[12px] justify-center">
-                  <div className="bg-red-500 text-white px-4 py-2 rounded mr-2">
-                    Cancel
-                  </div>
-                  <div className="bg-blue-500 text-white px-4 flex items-center rounded">
-                    Yes
-                  </div>
-                </div>
-              </div>
-            </div>
+  return ReactDOM.createPortal(
+    <div className="fixed inset-0 w-[100vw] h-[100vh] bg-black/60 flex justify-center items-center z-[9999]">
+      <div className="w-[90%] max-w-md bg-white rounded-lg p-6 relative">
+        {/* Close button */}
+        <div className="absolute top-2 right-2">
+          <button onClick={onClose}>
+            <IoMdClose className="text-gray-600 text-xl hover:text-red-500" />
+          </button>
+        </div>
+
+        {/* Modal content */}
+        <div className="flex flex-col items-center">
+          <AiOutlineExclamationCircle
+            size={60}
+            className="text-blue-500 mb-4"
+          />
+          <h2 className="text-lg font-semibold mb-2">Are you sure?</h2>
+          <p className="text-sm text-gray-600 mb-6 text-center">{para}</p>
+          <div className="flex gap-4">
+            <button
+              onClick={onClose}
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold px-4 py-2 rounded cursor-pointer"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={onConfirm}
+              className="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded cursor-pointer"
+            >
+              {redbutton}
+            </button>
           </div>
         </div>
       </div>
-    </>
+    </div>,
+    document.body
   );
 }
 

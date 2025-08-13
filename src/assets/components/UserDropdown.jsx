@@ -7,10 +7,12 @@ import { FiLogOut } from "react-icons/fi";
 // import { toast } from "react-toastify";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import DeleteModel from "./DeleteModel";
 
 const UserDropdown = () => {
   const [fullName, setFullName] = useState("");
   const [userId, setUserId] = useState("");
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const { logout } = useAuth(); // logout from context
   const navigate = useNavigate();
 
@@ -26,6 +28,18 @@ const UserDropdown = () => {
     }
   }, []);
 
+  const openDeleteModal = () => setShowDeleteModal(true);
+  const closeDeleteModal = () => setShowDeleteModal(false);
+
+  const confirmDelete = () => {
+    logout();
+    localStorage.removeItem("broom_auth");
+    localStorage.removeItem("profile_photo");
+    localStorage.removeItem("sidebar_open_dropdown");
+    localStorage.removeItem("sidebar_active_item");
+    navigate("/");
+  };
+
   const handleLogout = () => {
     logout();
     localStorage.removeItem("broom_auth");
@@ -36,7 +50,7 @@ const UserDropdown = () => {
   return (
     <>
       <div className={`relative `}>
-        <div className="absolute right-0 top-6  flex flex-col rounded-xl border border-gray-200 bg-white shadow-lg px-0.5  min-w-[220px] z-[99999]">
+        <div className="absolute right-0 top-6  flex flex-col rounded-xl border border-gray-200 bg-white shadow-lg px-0.5  min-w-[220px] ">
           <ul className="flex flex-col">
             <li>
               <Link
@@ -78,7 +92,10 @@ const UserDropdown = () => {
 
             <li>
               <button
-                onClick={handleLogout}
+                onClick={(e) => {
+                  e.stopPropagation(); // stop dropdown close
+                  openDeleteModal();
+                }}
                 className="flex w-full items-center gap-3 py-2 px-5 text-red-700 rounded-b-xl group text-[14px] hover:bg-gray-100 cursor-pointer"
               >
                 <FiLogOut className="w-4" />
@@ -88,6 +105,8 @@ const UserDropdown = () => {
           </ul>
         </div>
       </div>
+
+      {/* Delete Confirmation Modal */}
       {/* <DeleteModel
         isOpen={showDeleteModal}
         onClose={closeDeleteModal}
@@ -96,6 +115,17 @@ const UserDropdown = () => {
         para="Do you really want to logout? This action cannot be
             undone."
       /> */}
+
+      {/*  Modal outside the dropdown */}
+      {showDeleteModal && (
+        <DeleteModel
+          isOpen={showDeleteModal}
+          onClose={closeDeleteModal}
+          onConfirm={confirmDelete}
+          redbutton="Confirm"
+          para="Do you really want to logout? This action cannot be undone."
+        />
+      )}
     </>
   );
 };

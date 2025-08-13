@@ -64,7 +64,7 @@ function Header({ toggleSidebar, isOpen }) {
     <>
       {/* Top bar */}
       <div
-        className={`flex  sm:flex-row justify-between items-center ${
+        className={`flex sm:flex-row justify-between items-center ${
           isOpen ? "w-5/6 translate-x-[20%]" : "w-full"
         } bg-white border-b border-[#E0E0E0] p-3 py-4 space-y-4 sm:space-y-0`}
       >

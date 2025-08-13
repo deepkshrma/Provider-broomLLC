@@ -70,7 +70,7 @@ function Sidebar({ toggleSidebar, isOpen }) {
     <>
       <div
         className={`fixed top-0 left-0 h-screen bg-white shadow-md transition-all duration-300 
-        ${isOpen ? "lg:w-1/6 w-3/4 visible" : "hidden"} 
+        ${isOpen ? "lg:w-1/6 w-3/4 visible md:w-1/2" : "hidden"} 
         overflow-hidden z-50`}
       >
         <div className="w-full h-auto px-2 pt-5">
@@ -92,6 +92,7 @@ function Sidebar({ toggleSidebar, isOpen }) {
               active
               to="/Dashboard"
               isActive={location.pathname === "/Dashboard"}
+              onClick={toggleSidebar}
             />
           </Section>
 
@@ -114,6 +115,7 @@ function Sidebar({ toggleSidebar, isOpen }) {
                     label={item.label}
                     count={item.count}
                     isActive={isActive}
+                    onClick={toggleSidebar}
                   />
                 );
               })}
@@ -127,6 +129,7 @@ function Sidebar({ toggleSidebar, isOpen }) {
               label="Chatting"
               to="/Messages"
               isActive={location.pathname === "/Messages"}
+              onClick={toggleSidebar}
             />
           </Section>
           <hr className="text-[#E0E0E0] mt-5 mb-5" />
@@ -137,24 +140,28 @@ function Sidebar({ toggleSidebar, isOpen }) {
               label="Available services"
               to="/AllServices"
               isActive={location.pathname === "/AllServices"}
+              onClick={toggleSidebar}
             />
             <MenuItem
               icon={<RiSuitcase2Fill />}
               label="My services"
               to="/MyServices"
               isActive={location.pathname === "/MyServices"}
+              onClick={toggleSidebar}
             />
             {/* <MenuItem
               icon={<MdSubscriptions />}
               label="My subscriptions"
               to="/MySubscription"
               isActive={location.pathname === "/MySubscription"}
+              onClick={toggleSidebar}
             />
             <MenuItem
               icon={<TfiMenuAlt />}
               label="Service Requests"
               to="/ServiceRequestList"
               isActive={location.pathname === "/ServiceRequestList"}
+              onClick={toggleSidebar}
             /> */}
           </Section>
 
@@ -175,6 +182,7 @@ function Sidebar({ toggleSidebar, isOpen }) {
                       label={item.label}
                       count={item.count}
                       isActive={isActive}
+                      onClick={toggleSidebar}
                     />
                   );
                 })}
@@ -196,6 +204,7 @@ function Sidebar({ toggleSidebar, isOpen }) {
                     label={item.label}
                     to={item.to}
                     isActive={isActive}
+                    onClick={toggleSidebar}
                   />
                 );
               })}
@@ -217,6 +226,7 @@ function Sidebar({ toggleSidebar, isOpen }) {
                       label={item.label}
                       to={item.to}
                       isActive={isActive}
+                      onClick={toggleSidebar}
                     />
                   );
                 })}
@@ -227,11 +237,13 @@ function Sidebar({ toggleSidebar, isOpen }) {
                 icon={<MdAccountCircle />}
                 label="Account Information"
                 to="/Dashboard"
+                onClick={toggleSidebar}
               />
               <MenuItem
                 icon={<AiFillBank />}
                 label="Bank Information"
                 to="/Dashboard"
+                onClick={toggleSidebar}
               />
             </Section> */}
 
@@ -240,16 +252,19 @@ function Sidebar({ toggleSidebar, isOpen }) {
                 icon={<MdBusinessCenter />}
                 label="Business settings"
                 to="/Dashboard"
+                onClick={toggleSidebar}
               />
               <MenuItem
                 icon={<GiSettingsKnobs />}
                 label="Business plan"
                 to="/Dashboard"
+                onClick={toggleSidebar}
               />
               <MenuItem
                 icon={<AiFillSound />}
                 label="Notification Channel"
                 to="/Dashboard"
+                onClick={toggleSidebar}
               />
             </Section> */}
         </div>
@@ -267,17 +282,26 @@ const Section = ({ title, children }) => (
   </>
 );
 
-const MenuItem = ({ icon, label, isActive, to }) => (
-  <Link
-    to={to}
-    className={`flex items-center gap-3 py-2 pl-2 cursor-pointer hover:bg-blue-50 hover:text-blue-500 font-medium ${
-      isActive ? "text-blue-500 bg-blue-50 " : "text-[#202224]"
-    } text-[14px]`}
-  >
-    {icon}
-    <span className="hover:text-blue-500">{label}</span>
-  </Link>
-);
+const MenuItem = ({ icon, label, isActive, to, onClick }) => {
+  const handleClick = () => {
+    if (window.innerWidth < 1024) {
+      // lg breakpoint
+      onClick?.(); // Close sidebar only in mobile/tablet view
+    }
+  };
+  return (
+    <Link
+      to={to}
+      onClick={handleClick}
+      className={`flex items-center gap-3 py-2 pl-2 cursor-pointer hover:bg-blue-50 hover:text-blue-500 font-medium ${
+        isActive ? "text-blue-500 bg-blue-50 " : "text-[#202224]"
+      } text-[14px]`}
+    >
+      {icon}
+      <span className="hover:text-blue-500">{label}</span>
+    </Link>
+  );
+};
 
 const DropdownItem = ({ icon, label, isOpen, onToggle }) => (
   <div
@@ -313,25 +337,34 @@ const DropdownItem = ({ icon, label, isOpen, onToggle }) => (
   </div>
 );
 
-const SubItem = ({ label, count, to, isActive }) => (
-  <Link
-    to={to}
-    className="pl-9 py-2 w-full flex justify-between items-center mb-2 "
-  >
-    {/* <BsDot /> */}
-    <span className="flex items-center gap-2">
-      <BsDot
-        className={`text-lg ${isActive ? "text-blue-500" : "text-gray-500"}`}
-      />
-      <span
-        className={`text-[14px] font-medium  ${
-          isActive ? "text-blue-500" : "text-gray-700"
-        }`}
-      >
-        {label}
+const SubItem = ({ label, count, to, isActive, onClick }) => {
+  const handleClick = () => {
+    if (window.innerWidth < 1024) {
+      // lg breakpoint
+      onClick?.();
+    }
+  };
+  return (
+    <Link
+      to={to}
+      onClick={handleClick}
+      className="pl-9 py-2 w-full flex justify-between items-center mb-2 "
+    >
+      {/* <BsDot /> */}
+      <span className="flex items-center gap-2">
+        <BsDot
+          className={`text-lg ${isActive ? "text-blue-500" : "text-gray-500"}`}
+        />
+        <span
+          className={`text-[14px] font-medium  ${
+            isActive ? "text-blue-500" : "text-gray-700"
+          }`}
+        >
+          {label}
+        </span>
       </span>
-    </span>
-  </Link>
-);
+    </Link>
+  );
+};
 
 export default Sidebar;

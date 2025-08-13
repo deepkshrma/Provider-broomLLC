@@ -20,7 +20,6 @@ const Layout = ({ children }) => {
       <div className="flex flex-col flex-1 overflow-hidden">
         {/* Header */}
         <Header toggleSidebar={toggleSidebar} isOpen={isSidebarOpen} />
-
         {/* Scrollable Content */}
         <main
           className={`${
